@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;padding: 0;
+		}
+	 	#box1{
+	 		width: 500px;
+	 		height: 500px;
+	 		background: #ccc;
+	 	}
+	</style>
+</head>
+<body>
+	<div id="box1">
+			<canvas id="cv" width="500" height="500" ></canvas>
+	</div>
+
+	<script>
+		
+		var cv=document.getElementById('cv');
+		var ctx=cv.getContext('2d');
+		var box=document.getElementById('box');
+		cv.onmousedown=function(ev) {
+			var event=window.event||ev;
+			var left=event.clientX;
+			var top=event.clientY;
+			ctx.beginPath();
+			ctx.moveTo(left,top);
+			document.onmousemove=function(ev) {
+				var event=window.event||ev;
+				var xx=event.clientX ;
+				var yy=event.clientY ;
+				ctx.lineTo(xx,yy);
+				ctx.strokeStyle='green';
+				ctx.stroke();
+			};
+		};
+	</script>
+</body>
+</html>
